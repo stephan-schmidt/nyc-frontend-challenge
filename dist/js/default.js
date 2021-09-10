@@ -13,23 +13,23 @@ new Vue({
 	},
 
 	methods: {
-		checkForm: function (e) {
-		 if (this.name && this.age) {
-			 return true;
-		 }
-
-		 this.errors = [];
-
-		 if (!this.firstname) {
-			 this.errors.push('First Name required.');
-		 }
-
-		 if (!this.email) {
-			 this.errors.push('email required.');
-		 }
-
-		 e.preventDefault();
-	 },
+		// checkForm: function (e) {
+		//  if (this.name && this.age) {
+		// 	 return true;
+		//  }
+	 //
+		//  this.errors = [];
+	 //
+		//  if (!this.firstname) {
+		// 	 this.errors.push('First Name required.');
+		//  }
+	 //
+		//  if (!this.email) {
+		// 	 this.errors.push('email required.');
+		//  }
+	 //
+		//  e.preventDefault();
+	 // },
   async loadFormData() {
       const response =  await fetch('https://putsreq.com/RWhI8ht10y5kqfmemrML');
       const fields =  await response.json();

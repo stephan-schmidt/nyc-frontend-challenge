@@ -5,88 +5,20 @@ new Vue({
 
 	data: {
 		formItems: [],
-    formData: [{
-      "id": "1111",
-      "label": "First Name",
-      "name": "nameFirst",
-      "type": "text",
-      "required": 1
-    },
-    {
-      "id": "2222",
-      "label": "Last Name",
-      "name": "nameLast",
-      "type": "text",
-      "required": 1
-    },
-    {
-      "id": "3333",
-      "label": "Your Phone Number",
-      "name": "contactPhone",
-      "type": "tel",
-      "pattern": "[0-9]{10}",
-      "required": 0
-    },
-    {
-      "id": "4444",
-      "label": "Your Email",
-      "name": "contactEmail",
-      "type": "email",
-      "required": 0
-    },
-    {
-      "id": "5555",
-      "legend": "Your preferred contact",
-      "name": "contactPreferred",
-      "type": "radio",
-      "required": 1,
-      "options": [
-        {
-          "id": "5555-1",
-          "label": "Phone",
-          "value": "phone"
-        },
-        {
-          "id": "5555-2",
-          "label": "Email",
-          "value": "email"
-        }]
-      }],
-    // formDataPostDev:[{
-    //   "name": "nameFirst",
-    //   "value": "Jane"
-    // },
-    // {
-    //   "name": "nameLast",
-    //   "value": "Doe"
-    // },
-    // {
-    //   "name": "contactPhone",
-    //   "value": "9999999999"
-    // },
-    // {
-    //   "name": "contactEmail",
-    //   "value": "jd@email.com"
-    // },
-    // {
-    //   "name": "contactPreferred",
-    //   "value": "phone"
-    // }],
     formDataPost:[]
 	},
 
 	created: function created() {
 		this.loadFormData();
-    console.log(this.formData);
 	},
 
 	methods: {
   async loadFormData() {
-      // const response =  await fetch('https://putsreq.com/RWhI8ht10y5kqfmemrML');
-      // const fields =  await response.json();
-      // console.log(fields);
-      // this.formItems = fields;
-      this.formItems = this.formData;
+      const response =  await fetch('https://putsreq.com/RWhI8ht10y5kqfmemrML');
+      const fields =  await response.json();
+      console.log(fields);
+      this.formItems = fields;
+    //this.formItems = this.formData;
     },
 
   async sendFormData() {
@@ -110,7 +42,7 @@ new Vue({
       {
         self.formDataPost = [];
         self = this;
-          self.formData.map( function(a,b){
+          self.formItems.map( function(a,b){
             const obj ={};
             obj['name'] = a.name;
             if(a.name != 'contactPreferred'){
@@ -126,6 +58,7 @@ new Vue({
             }
             self.formDataPost.push(obj);
           })
+					console.log(self.formDataPost);
           self.sendFormData();
       }
 

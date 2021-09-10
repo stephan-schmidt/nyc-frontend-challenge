@@ -20,11 +20,12 @@ new Vue({
 
 		 this.errors = [];
 
-		 if (!this.name) {
-			 this.errors.push('Name required.');
+		 if (!this.firstname) {
+			 this.errors.push('First Name required.');
 		 }
-		 if (!this.age) {
-			 this.errors.push('Age required.');
+
+		 if (!this.email) {
+			 this.errors.push('email required.');
 		 }
 
 		 e.preventDefault();

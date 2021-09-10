@@ -13,6 +13,22 @@ new Vue({
 	},
 
 	methods: {
+		checkForm: function (e) {
+		 if (this.name && this.age) {
+			 return true;
+		 }
+
+		 this.errors = [];
+
+		 if (!this.name) {
+			 this.errors.push('Name required.');
+		 }
+		 if (!this.age) {
+			 this.errors.push('Age required.');
+		 }
+
+		 e.preventDefault();
+	 },
   async loadFormData() {
       const response =  await fetch('https://putsreq.com/RWhI8ht10y5kqfmemrML');
       const fields =  await response.json();
@@ -35,11 +51,52 @@ new Vue({
   });
   const content = await rawResponse.json();
 
-  console.log(content);
+
       },
+			validateFormFields ()
+			{
+			  const firstname = document.getElementById("1111");
+			firstname.addEventListener("input", function (event) {
+			if (firstname.validity.typeMismatch) {
+			firstname.setCustomValidity("Please enter your first name!");
+			} else {
+
+			};
+			});
+
+			const lastname = document.getElementById("2222");
+			lastname.addEventListener("input", function (event) {
+			if (lastname.validity.typeMismatch) {
+			lastname.setCustomValidity("Please enter your last name!");
+			} else {
+
+			};
+			});
+
+
+			  const email = document.getElementById("4444");
+			email.addEventListener("input", function (event) {
+			if (email.validity.typeMismatch) {
+			email.setCustomValidity("Please enter a valid email address!");
+			} else {
+
+			};
+			});
+
+			const phone = document.getElementById("3333");
+			phone.addEventListener("input", function (event) {
+			if (phone.validity.typeMismatch) {
+			phone.setCustomValidity("Please provide a 10 digit phone number without brakcets or dashes e.g. 9999999999");
+			} else {
+			phone.setCustomValidity("");
+			}
+			});
+
+			},
 
       getFormValues ()
       {
+				//this.validateFormFields();
         self.formDataPost = [];
         self = this;
           self.formItems.map( function(a,b){

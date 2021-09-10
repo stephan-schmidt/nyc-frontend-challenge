@@ -10,13 +10,19 @@
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="favicon.svg" rel="icon" type="image/svg+xml" />
 
-    <title>Front-end Assignment</title> 
+    <title>Front-end Assignment</title>
   </head>
 
   <body>
 
     <main id="formfields">
       <form class="ml-8 mt-8  w-full max-w-sm"  ref="form" @submit.prevent="getFormValues">
+        <p v-if="errors.length">
+            <b>Please correct the following error(s):</b>
+            <ul>
+              <li v-for="error in errors">{{ error }}</li>
+            </ul>
+          </p>
         <div v-for="(item,index) in formItems">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
           {{item.label}}
